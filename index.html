@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scan Port UI</title>
+    <style>
+      .field {
+        margin: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Scan Port UI</h1>
+    <h2>Settings</h2>
+    <div class="field">
+      <label for="host">host:</label>
+      <input type="text" id="host" />
+    </div>
+    <div class="field">
+      <label for="port">port:</label>
+      <input type="number" step="1" min="80" id="port" value="8080" />
+    </div>
+    <h2>Host List</h2>
+    <ol id="hostList">
+      <li class="host">
+        <a></a>
+      </li>
+    </ol>
+    <script>
+      host.value ||= location.hostname
+
+      let hostTemplate = hostList.querySelector('.host')
+      hostTemplate.remove()
+
+      function scan() {
+        let parts = host.value.split('.')
+        for (let i = 85; i < 87; i++) {
+          parts.pop()
+          parts.push(i)
+          let url = 'http://' + parts.join('.') + ':' + port.value
+          fetch(url, { mode: 'cors' })
+            .then(res => {
+              let host = hostTemplate.cloneNode(true)
+              let a = host.querySelector('a')
+              a.textContent = url
+              a.href = url
+              hostList.appendChild(host)
+              console.log('res:', res)
+            })
+            .catch(e => {
+              console.log('e:', e)
+            })
+        }
+      }
+
+      setTimeout(scan)
+    </script>
+  </body>
+</html>
