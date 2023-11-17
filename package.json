@@ -14,7 +14,7 @@
     "scan-port-cli": "cli.js"
   },
   "files": [
-    "dist/core.js",
+    "core.js",
     "cli.js"
   ],
   "scripts": {
