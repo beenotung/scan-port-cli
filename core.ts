@@ -80,7 +80,7 @@ function formatInterval(): string {
   }
 }
 
-console.log(`Scanning on port ${scanPort} every ${formatInterval()}`)
+console.log(`Scanning on port ${scanPort} every ${formatInterval()} ...`)
 
 function findHost() {
   for (let iFaces of Object.values(networkInterfaces())) {
