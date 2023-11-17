@@ -1,6 +1,6 @@
 {
   "name": "scan-port-cli",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Scan localhost hosts listening on a specific port",
   "keywords": [],
   "author": "Beeno Tung <aabbcc1241@yahoo.com.hk> (https://beeno-tung.surge.sh)",
