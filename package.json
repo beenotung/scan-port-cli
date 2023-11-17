@@ -1,6 +1,6 @@
 {
   "name": "scan-port-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scan local network hosts listening on a specific port",
   "keywords": [
     "scan",
