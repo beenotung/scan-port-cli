@@ -1,14 +1,19 @@
 {
   "name": "scan-port-cli",
   "version": "0.0.0",
-  "description": "",
+  "description": "Scan localhost hosts listening on a specific port",
   "keywords": [],
-  "author": {
-    "name": "Beeno Tung",
-    "email": "aabbcc1241@yahoo.com.hk",
-    "url": "https://beeno-tung.surge.sh"
-  },
+  "author": "Beeno Tung <aabbcc1241@yahoo.com.hk> (https://beeno-tung.surge.sh)",
   "license": "BSD-2-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beenotung/scan-port-cli.git"
+  },
+  "homepage": "https://github.com/beenotung/scan-port-cli#readme",
+  "bugs": {
+    "url": "https://github.com/beenotung/scan-port-cli/issues"
+  },
+  "main": "cli.js",
   "bin": {
     "scan-port": "cli.js",
     "scan-port-cli": "cli.js"
