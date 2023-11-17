@@ -2,7 +2,18 @@
   "name": "scan-port-cli",
   "version": "1.0.0",
   "description": "Scan local network hosts listening on a specific port",
-  "keywords": [],
+  "keywords": [
+    "scan",
+    "port",
+    "local network",
+    "LAN",
+    "cli",
+    "command-line",
+    "utility",
+    "tool",
+    "server",
+    "discover"
+  ],
   "author": "Beeno Tung <aabbcc1241@yahoo.com.hk> (https://beeno-tung.surge.sh)",
   "license": "BSD-2-Clause",
   "repository": {
