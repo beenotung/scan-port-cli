@@ -1,9 +1,86 @@
 import { networkInterfaces } from 'os'
+let pkg = require('./package.json')
 
 let scanPort = 8080
 let host = findHost()
 let hostPrefix = toHostPrefix(host)
 let interval = 3000
+
+for (let i = 2; i < process.argv.length; i++) {
+  let arg = process.argv[i]
+  if (arg == '--port' || arg == '-p') {
+    i++
+    scanPort = +process.argv[i]
+    if (!scanPort) {
+      console.error('Invalid port, expect number')
+      process.exit(1)
+    }
+    continue
+  }
+  if (arg == '--interval' || arg == '-i') {
+    i++
+    let arg: string | number = process.argv[i]
+    if (arg.endsWith('s')) {
+      arg = +arg.substring(0, arg.length - 1) * 1000
+    } else if (arg.endsWith('m')) {
+      arg = +arg.substring(0, arg.length - 1) * 1000 * 60
+    }
+    interval = +arg
+    if (!interval) {
+      console.error('Invalid interval, expect number in ms')
+      process.exit(1)
+    }
+    continue
+  }
+  if (arg == '--help' || arg == '-h') {
+    console.log(
+      `
+scan-port-cli v${pkg.version}
+
+Usage: scan-port-cli [options]
+
+Options:
+  -h, --help     : show this help message
+  -p, --port     : specify port number, default is 8080
+  -i, --interval : specify scan interval, default is 3000 (3 seconds)
+
+Usage Example:
+
+Scan port with default settings:
+>  scan-port-cli
+
+Scan port 3000:
+>  scan-port-cli --port 3000
+
+Scan every 2 seconds:
+>  scan-port-cli --interval 2000
+or using unit (s for seconds, m for minutes):
+> scan-port-cli --interval 2s
+
+Combine all settings:
+> scan-port-cli --port 3000 --interval 2s
+`.trim(),
+    )
+    process.exit(0)
+  }
+}
+
+function formatInterval(): string {
+  let string = (interval / 1000).toFixed(3)
+  while (string.endsWith('0')) {
+    string = string.substring(0, string.length - 1)
+  }
+  if (string.endsWith('.')) {
+    string = string.substring(0, string.length - 1)
+  }
+  if (interval > 1000) {
+    return string + ' seconds'
+  } else {
+    return string + ' second'
+  }
+}
+
+console.log(`Scanning on port ${scanPort} every ${formatInterval()}`)
 
 function findHost() {
   for (let iFaces of Object.values(networkInterfaces())) {
