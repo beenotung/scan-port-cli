@@ -1,6 +1,6 @@
 # scan-port-cli
 
-Scan localhost hosts listening on a specific port
+Scan local network hosts listening on a specific port
 
 [![npm Package Version](https://img.shields.io/npm/v/scan-port-cli)](https://www.npmjs.com/package/scan-port-cli)
 
