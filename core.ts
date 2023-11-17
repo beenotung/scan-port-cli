@@ -3,7 +3,7 @@ import { networkInterfaces } from 'os'
 let scanPort = 8080
 let host = findHost()
 let hostPrefix = toHostPrefix(host)
-let interval = 5000
+let interval = 3000
 
 function findHost() {
   for (let iFaces of Object.values(networkInterfaces())) {
@@ -35,13 +35,23 @@ function scan(port: number) {
   loop()
 }
 
+function d2(x: number) {
+  return x.toString().padStart(2, '0')
+}
+
+function formatTime(date: Date): string {
+  return [date.getHours(), date.getMinutes(), date.getSeconds()]
+    .map(d2)
+    .join(':')
+}
+
 function loop() {
   Promise.all(
     pendingUrls.map(url =>
       fetch(url)
         .then(res => {
           knownUrls.push(url)
-          console.log('found', url)
+          console.log(`[${formatTime(new Date())}]`, url)
           let index = pendingUrls.indexOf(url)
           if (index != -1) {
             pendingUrls.splice(index, 1)

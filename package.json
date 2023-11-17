@@ -1,15 +1,22 @@
 {
-  "name": "scan-port-ui",
-  "version": "1.0.0",
+  "name": "scan-port-cli",
+  "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "scan-port": "cli.js",
+    "scan-port-cli": "cli.js"
+  },
+  "files": [
+    "dist/core.js",
+    "cli.js"
+  ],
   "scripts": {
     "test": "tsc --noEmit",
     "build": "tsc -p ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.9.0",
     "ts-node": "^10.9.1",
